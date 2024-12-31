@@ -2,7 +2,7 @@ from fastapi import FastAPI
 import uvicorn
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
-from starlette.requests import Request
+from fastapi import Request
 
 
 app = FastAPI()
