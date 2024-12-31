@@ -14,24 +14,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Set up SSH key and add passphrase
-      - name: Install expect
-        run: sudo apt-get install -y expect
-
-      - name: Add SSH key with passphrase
-        run: |
-          expect <<EOF
-          spawn ssh-add
-          expect "Enter passphrase for"
-          send "${{ secrets.MY_PHRASE }}" 
-          expect eof
-          EOF
-
       # Set up SSH key for GitHub authentication
       - name: Set up SSH key
         uses: webfactory/ssh-agent@v0.7.0
         with:
           ssh-private-key: ${{ secrets.MY_KEY }}
+
+      # Add SSH key with passphrase
+      - name: Add SSH key with passphrase
+        run: |
+          echo "${{ secrets.MY_PHRASE }}" | ssh-add -
 
       # Optional: Install dependencies (like Docker)
       - name: Set up Docker
