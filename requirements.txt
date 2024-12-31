@@ -2,3 +2,6 @@ fastapi
 uvicorn
 pytest
 httpx
+fastapi 
+jinja2 
+starlette
