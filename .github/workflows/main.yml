@@ -18,8 +18,9 @@ jobs:
           mkdir -p ~/.ssh
           ssh-keyscan -H 45.145.65.204 >> ~/.ssh/known_hosts
           
-      - name: Copy project files
+      - name: Create directory and copy files
         run: |
+          ssh root@45.145.65.204 'mkdir -p /root/app'
           scp -r ./* root@45.145.65.204:/root/app/
           
       - name: Deploy
