@@ -29,15 +29,13 @@ jobs:
       # Optional: Install dependencies (like Docker)
       - name: Set up Docker
         uses: docker/setup-buildx-action@v2
-
-      # Build Docker image
-      - name: Build Docker image
-        run: docker build -t my-backend-image .
-
-      # Test Docker image
-      - name: Test Docker image
-        run: docker run --rm my-backend-image pytest -s -v
-
-      # Deploy using Docker Compose
-      - name: Deploy with Docker Compose
-        run: docker compose up -d
+        
+      - name: Build and test
+        run: |
+          docker build -t my-backend-image .
+          docker run --rm my-backend-image pytest -s -v
+          
+      - name: Deploy to server
+        run: |
+          scp docker-compose.yml root@45.145.65.204:/root/
+          ssh root@45.145.65.204 'cd /root && docker compose up -d'
