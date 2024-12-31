@@ -14,6 +14,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Print current working directory
+        run: pwd
+
+      - name: List files in the current directory
+        run: ls -la
+      
       # Set up SSH key for GitHub authentication
       - name: Set up SSH key
         uses: webfactory/ssh-agent@v0.7.0
