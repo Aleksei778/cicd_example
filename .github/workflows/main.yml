@@ -20,11 +20,6 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.MY_KEY }}
 
-      # Add SSH key with passphrase
-      - name: Add SSH key with passphrase
-        run: |
-          echo "${{ secrets.MY_PHRASE }}" | ssh-add -
-
       # Optional: Install dependencies (like Docker)
       - name: Set up Docker
         uses: docker/setup-buildx-action@v2
