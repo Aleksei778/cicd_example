@@ -24,6 +24,7 @@ jobs:
         uses: webfactory/ssh-agent@v0.7.0
         with:
           ssh-private-key: ${{ secrets.MY_KEY }}
+          ssh-passphrase: ${{ secrets.MY_PHRASE }}
 
       # 3. Копирование файлов на сервер
       - name: Copy files to server
