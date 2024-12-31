@@ -28,7 +28,7 @@ jobs:
       # 3. Копирование файлов на сервер
       - name: Copy files to server
         run: |
-          rsync -avz --exclude='.github' ./ ${{ github.event.inputs.server_ip }}:/path/to/project
+          rsync -avz --exclude='.github' ./ ${{ github.event.inputs.server_ip }}:/projects/my-project
 
       # 4. Запуск Docker Compose на сервере
       - name: Deploy Docker Compose
